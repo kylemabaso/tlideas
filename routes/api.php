@@ -6,6 +6,7 @@ use App\Models\Geolocation;
 use App\Models\Requisition;
 use App\Models\RequisitionStatus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +31,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('requisitions', function (Request $request) {
-    $requisitions = Requisition::with('requisition_status')->get();
+    $requisitions = Requisition::with('requisition_status')
+//        ->where('driver_id','===', Auth::user())
+        ->get();
 
     return $requisitions;
 });
