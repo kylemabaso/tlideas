@@ -75,12 +75,12 @@
             } else if (_status.innerText === 'Waste Collected') {
                 percentage[i].innerText = '50%'
                 progress[i].style.width = '50%'
+            } else if (_status.innerText === 'Sorting' || 'Handed Over') {
+                percentage[i].innerText = '75%'
+                progress[i].style.width = '75%'
             } else if (_status.innerText === 'Disposed') {
                 percentage[i].innerText = '100%'
                 progress[i].style.width = '100%'
-            } else if (_status.innerText === 'Collected' || 'Handed Over') {
-                percentage[i].innerText = '75%'
-                progress[i].style.width = '75%'
 
             } else {
                 percentage[i].innerText = '0%'
