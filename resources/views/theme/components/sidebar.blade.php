@@ -9,6 +9,7 @@
                 </a>
                 <div class="triangle"></div>
             </li>
+            @hasrole('admin|owner|staff')
             <li class="nav-item" data-item="clients">
                 <a class="nav-item-hold" href="#">
                     <i class="nav-icon i-Library"></i>
@@ -16,6 +17,8 @@
                 </a>
                 <div class="triangle"></div>
             </li>
+            @endhasrole
+            @hasrole('admin|owner|staff|driver')
             <li class="nav-item" data-item="requisitions">
                 <a class="nav-item-hold" href="#">
                     <i class="nav-icon i-Suitcase"></i>
@@ -23,6 +26,8 @@
                 </a>
                 <div class="triangle"></div>
             </li>
+            @endhasrole
+            @hasrole('admin|owner|staff')
             <li class="nav-item" data-item="users">
                 <a class="nav-item-hold" href="#">
                     <i class="nav-icon i-Administrator"></i>
@@ -30,6 +35,7 @@
                 </a>
                 <div class="triangle"></div>
             </li>
+            @endhasrole
 
 
         </ul>
@@ -83,18 +89,22 @@
                 <p>Requisition Menu</p>
             </header>
             <ul class="childNav">
+                @hasrole('admin|owner|staff|driver')
                 <li class="nav-item">
                     <a href="{{ route('requisitions') }}">
                         <i class="nav-icon i-Add-File"></i>
                         <span class="item-name">View Requisitions</span>
                     </a>
                 </li>
+                @endhasrole
+                @hasrole('admin|owner|staff')
                 <li class="nav-item">
                     <a href="{{ route('requisitions.create') }}">
                         <i class="nav-icon i-Email"></i>
                         <span class="item-name">Add Requisition</span>
                     </a>
                 </li>
+                @endhasrole
             </ul>
         </div>
         <div class="submenu-area" data-parent="users">

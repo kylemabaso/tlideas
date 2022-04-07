@@ -23945,8 +23945,8 @@ div.tab-border {
   height: 100%; }
 
 .auth-logo img {
-  width: 100px;
-  height: 100px; }
+  width: 100%;
+  height: 60px; }
 
 @media (min-width: 1024px) {
   .auth-layout-wrap .auth-content {

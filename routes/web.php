@@ -28,6 +28,21 @@ Route::middleware(['auth'])->group(function () {
     })->name('/');
 });
 
+Route::middleware(['auth', 'role:admin|owner|staff|driver'])->group(function () {
+    Route::get('requisitions', [RequisitionController::class, 'index'])->name('requisitions');
+    Route::get('requisitions/create', [RequisitionController::class, 'create'])->name('requisitions.create');
+    Route::get('requisitions/{requisition}', [RequisitionController::class, 'show']);
+    Route::patch('requisitions/{requisition}', [RequisitionController::class, 'update'])->name('requisitions.update');
+    Route::post('requisitions/store', [RequisitionController::class, 'store'])->name('requisitions.store');
+
+    Route::get('manifests', [ManifestController::class, 'index'])->name('manifests');
+    Route::get('manifests/{manifest}', [ManifestController::class, 'show'])->name('manifest.show');
+    Route::get('requisitions/{requisition}/manifests/create', [ManifestController::class, 'create'])->name('manifest.create');
+    Route::post('requisitions/{requisition}/manifests', [ManifestController::class, 'store'])->name('manifest.store');
+
+    Route::get('geolocation/{requisition}/locate', [GeolocationController::class, 'index'])->name('geolocation.locate');
+});
+
 Route::middleware(['auth', 'role:admin|owner|staff'])->group(function () {
     Route::get('users', [UsersController::class, 'index'])->name('users');
     Route::get('users/create', [UsersController::class, 'create'])->name('users.create');
@@ -37,22 +52,9 @@ Route::middleware(['auth', 'role:admin|owner|staff'])->group(function () {
     Route::get('clients/create', [ClientController::class, 'create'])->name('clients.create');
     Route::post('clients/store', [ClientController::class, 'store'])->name('clients.store');
 
-    Route::get('requisitions', [RequisitionController::class, 'index'])->name('requisitions');
-    Route::get('requisitions/create', [RequisitionController::class, 'create'])->name('requisitions.create');
-    Route::get('requisitions/{requisition}', [RequisitionController::class, 'show']);
-    Route::patch('requisitions/{requisition}', [RequisitionController::class, 'update'])->name('requisitions.update');
-    Route::post('requisitions/store', [RequisitionController::class, 'store'])->name('requisitions.store');
-
-    Route::get('manifests', [ManifestController::class, 'index'])->name('manifests');
-    Route::get('manifests/{manifest}', [ManifestController::class, 'show'])->name('manifest.show');
-//    Route::get('manifests/create', [ManifestController::class, 'create'])->name('manifests.create');
-//    Route::post('manifests/store', [ManifestController::class, 'store'])->name('manifests.store');
-
     Route::get('requisitions/{requisition}/manifests/create', [ManifestController::class, 'create'])->name('manifest.create');
     Route::post('requisitions/{requisition}/manifests', [ManifestController::class, 'store'])->name('manifest.store');
     Route::post('requisitions/assign', [ManifestController::class, 'assign'])->name('manifest.assign');
-
-    Route::get('geolocation/{requisition}/locate', [GeolocationController::class, 'index'])->name('geolocation.locate');
 
     Route::get('user/{user}', function (User $user) {
         return view('system.users.index', [

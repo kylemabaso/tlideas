@@ -7,9 +7,6 @@
 @section('content')
     <div class="breadcrumb">
         <h1 class="mr-2">Client</h1>
-        <ul>
-            <li><a href="">Create</a></li>
-        </ul>
     </div>
 
     <div class="separator-breadcrumb border-top"></div>
@@ -21,7 +18,7 @@
                     <div class="card-title mb-3">
                         <span>Create a Client</span>
                         <span>
-                            <button class="btn btn-primary btn-rounded m-1 float-right" type="button">Back to Users</button>
+                            <button class="btn btn-primary btn-rounded m-1 float-right" type="button">Back to Clients</button>
                         </span>
                     </div>
 
@@ -30,21 +27,21 @@
                             <div class="row">
                                 <div class="col-md-6 form-group mb-3">
                                     <label for="firstname">Company Name</label>
-                                    <input class="form-control form-control-rounded" name="name" id="name" type="text" placeholder="Enter your first name" />
+                                    <input class="form-control form-control-rounded" name="name" id="name" type="text" placeholder="Enter company name" />
                                     @error('name')
                                     <p>{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div class="col-md-6 form-group mb-3">
                                     <label for="lastname">Phone</label>
-                                    <input class="form-control form-control-rounded" name="phone" id="phone" type="text" placeholder="Enter your last name" />
+                                    <input class="form-control form-control-rounded" name="phone" id="phone" type="text" placeholder="Enter phone number" />
                                     @error('phone')
                                     <p>{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div class="col-md-6 form-group mb-3">
                                     <label for="email">Email Address</label>
-                                    <input class="form-control form-control-rounded" name="email" id="email" type="email" placeholder="Enter email" />
+                                    <input class="form-control form-control-rounded" name="email" id="email" type="email" placeholder="Enter email address" />
                                     @error('email')
                                     <p>{{ $message }}</p>
                                     @enderror
