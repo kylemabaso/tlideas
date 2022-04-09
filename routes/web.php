@@ -4,6 +4,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\GeolocationController;
 use App\Http\Controllers\ManifestController;
 use App\Http\Controllers\RequisitionController;
+use App\Http\Controllers\RolesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Livewire\CreateUser;
 use App\Models\Requisition;
@@ -43,7 +44,7 @@ Route::middleware(['auth', 'role:admin|owner|staff|driver'])->group(function () 
     Route::get('geolocation/{requisition}/locate', [GeolocationController::class, 'index'])->name('geolocation.locate');
 });
 
-Route::middleware(['auth', 'role:admin|owner|staff'])->group(function () {
+Route::middleware(['auth', 'role:admin|owner'])->group(function () {
     Route::get('users', [UsersController::class, 'index'])->name('users');
     Route::get('users/create', [UsersController::class, 'create'])->name('users.create');
     Route::post('users/store', [UsersController::class, 'store'])->name('users.store');
@@ -55,6 +56,9 @@ Route::middleware(['auth', 'role:admin|owner|staff'])->group(function () {
     Route::get('requisitions/{requisition}/manifests/create', [ManifestController::class, 'create'])->name('manifest.create');
     Route::post('requisitions/{requisition}/manifests', [ManifestController::class, 'store'])->name('manifest.store');
     Route::post('requisitions/assign', [ManifestController::class, 'assign'])->name('manifest.assign');
+
+    Route::get('roles/create', [RolesController::class, 'create'])->name('roles.create');
+    Route::get('roles/store', [RolesController::class, 'store'])->name('roles.store');
 
     Route::get('user/{user}', function (User $user) {
         return view('system.users.index', [

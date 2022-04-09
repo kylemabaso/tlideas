@@ -32,7 +32,7 @@
                         <div id="print-area">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="font-weight-bold">{{ $manifest->requisition->user->client->name ?? 'Unavailable' }}</h4>
+                                    <h4 class="font-weight-bold">{{ $manifest->requisition->client->name ?? 'Unavailable' }}</h4>
                                     <p>TL - {{ $manifest->requisition->requisition_number }}</p>
                                 </div>
                                 <div class="col-md-6 text-sm-right">
@@ -67,7 +67,7 @@
                                             <th scope="col">Bin Location</th>
                                             <th scope="col">Bin Qty</th>
                                             <th scope="col">Bin Sizes</th>
-                                            <th scope="col">Mass (Kg)</th>
+                                            <th scope="col" style="text-align:right">Mass (Kg)</th>
                                         </tr>
                                         </thead>
                                         <tbody>

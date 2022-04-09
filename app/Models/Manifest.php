@@ -17,6 +17,9 @@ class Manifest extends Model
         'notes',
         'requisition_id',
         'user_id',
+        'destination_id',
+        'transaction_number',
+        'disposal_date',
     ];
 
     public function manifest_items()

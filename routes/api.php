@@ -31,8 +31,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('requisitions', function (Request $request) {
+    $id = Auth::id();
+
     $requisitions = Requisition::with('requisition_status')
-//        ->where('driver_id','===', Auth::user())
+        ->where('driver_id','=', $id)
         ->get();
 
     return $requisitions;

@@ -9,7 +9,6 @@
                                     <th scope="col">Bin Size</th>
                                     <th scope="col">Bin Qty</th>
                                     <th scope="col">Mass Kg</th>
-                                    <th scope="col">Tonnage</th>
                                     <th scope="col"></th>
                                 </tr>
                                 </thead>
@@ -83,7 +82,6 @@
                                             <p class="danger">{{ $message }}</p>
                                             @enderror
                                         </td>
-                                        <td>600</td>
                                         <td>
                                             <button class="btn btn-outline-secondary float-right"
                                                 wire:click.prevent="removeWaste({{$index}})"

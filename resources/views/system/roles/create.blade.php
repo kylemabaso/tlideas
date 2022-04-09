@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="breadcrumb">
-        <h1 class="mr-2">Requisition</h1>
+        <h1 class="mr-2">Roles</h1>
         <ul>
             <li><a href="">Create</a></li>
         </ul>
@@ -19,11 +19,9 @@
             <div class="card mb-4">
                 <div class="card-body">
                     <div class="card-title mb-3">
-                        <span>Create a Requisition</span>
+                        <span>Create a Role</span>
                         <span>
-                            <a href="">
-                                <button class="btn btn-primary btn-rounded m-1 float-right" type="button">Back to Requisitions</button>
-                            </a>
+                            <a href="{{ route('roles') }}" class="btn btn-primary btn-rounded m-1 float-right" type="button">Back to Roles</a>
                         </span>
                     </div>
 

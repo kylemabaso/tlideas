@@ -25,16 +25,7 @@
             <div>
                 <div class="card">
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade" id="invoice" role="tabpanel" aria-labelledby="invoice-tab">
-                            <div class="d-sm-flex mb-5" data-view="print"><span class="m-auto"></span>
-                                <button class="btn btn-primary mb-sm-0 mb-3 print-invoice">Print Invoice</button>
-                            </div>
-                            <!-- -===== Print Area =======-->
-                            <div id="print-area">
 
-                            </div>
-                            <!-- ==== / Print Area =====-->
-                        </div>
                         <div class="tab-pane fade active show" id="edit" role="tabpanel" aria-labelledby="edit-tab">
                             <!-- ==== Edit Area =====-->
                             <div class="d-flex mb-5"><span class="m-auto"></span>
@@ -116,9 +107,15 @@
                                             <select name="destination_id" id="destination_id" class="form-control form-control-rounded">
                                                 <option value="">Select Destination</option>
                                                 @foreach($destinations as $destination)
-                                                    <option value="{{ $destination->id }}">{{ $destination->name }}</option>
+                                                <option value="{{ $destination->id }}">{{ $destination->name }}</option>
                                                 @endforeach
                                             </select>
+                                        </div>
+                                        <div class="col-md-10 offset-md-2 form-group mb-3 pr-0">
+                                            <input class="form-control form-control-rounded" name="transaction_number" type="text" placeholder="Transaction Number">
+                                        </div>
+                                        <div class="col-md-10 offset-md-2 form-group mb-3 pr-0">
+                                            <input class="form-control form-control-rounded" name="disposal_date" type="datetime-local" id="disposal_date">
                                         </div>
                                         <div class="col-md-10 offset-md-2 form-group mb-3 pr-0">
                                             <textarea class="form-control form-control-rounded text-right" data-value="notes" placeholder="Additional notes"></textarea>

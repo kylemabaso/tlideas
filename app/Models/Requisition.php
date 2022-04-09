@@ -15,6 +15,7 @@ class Requisition extends Model
         'pick_up_date',
         'subject',
         'details',
+        'client_id',
         'user_id',
         'driver_id',
         'manifest_id'
@@ -38,6 +39,10 @@ class Requisition extends Model
     public function geolocations()
     {
         return $this->hasMany(Geolocation::class);
+    }
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
     }
     public function driver()
     {

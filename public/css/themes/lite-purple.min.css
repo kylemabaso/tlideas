@@ -16325,7 +16325,7 @@ a.typo_link.text-gray-900:after {
       margin-bottom: 14px; }
       .layout-sidebar-compact .sidebar-left-secondary header .logo img {
         width: auto;
-        height: 24px; }
+        height: 40px; }
     .layout-sidebar-compact .sidebar-left-secondary header h6 {
       font-size: 18px;
       margin-bottom: 4px;
@@ -17049,7 +17049,7 @@ a.typo_link.text-gray-900:after {
   .app-footer .footer-bottom {
     width: 100%; }
     .app-footer .footer-bottom .logo {
-      width: 3rem;
+      width: 6rem !important;
       height: auto;
       margin: 4px; }
 

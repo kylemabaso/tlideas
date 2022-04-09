@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('operator_out')->nullable();
             $table->string('lat')->nullable();
             $table->string('long')->nullable();
+            $table->string('disposal_date')->nullable();
             $table->foreignId('requisition_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('destination_id')->nullable()->constrained();

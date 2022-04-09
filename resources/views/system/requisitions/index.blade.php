@@ -53,9 +53,15 @@
 
                 </div>
             </div>
+
+            {{ $requisitions->links() }}
         </div>
     </div>
-
+    <style>
+        .w-5 {
+            display: none;
+        }
+    </style>
     <script type="text/javascript" defer>
         const status = document.querySelectorAll('#status-text')
         let percentage = document.querySelectorAll('#percentage')
@@ -66,19 +72,25 @@
             if (_status.innerText === 'Awaiting Acceptance') {
                 percentage[i].innerText = '0%'
                 progress[i].style.width = '0%'
-            } else if (_status.innerText === 'Accepted') {
+            } else if (_status.innerText === 'Assigned to Driver') {
                 percentage[i].innerText = '10%'
                 progress[i].style.width = '10%'
-            } else if (_status.innerText === 'Assigned to Driver') {
+            } else if (_status.innerText === 'Waste Collected') {
                 percentage[i].innerText = '25%'
                 progress[i].style.width = '25%'
-            } else if (_status.innerText === 'Waste Collected') {
+            } else if (_status.innerText === 'En Route to Sorting') {
                 percentage[i].innerText = '50%'
                 progress[i].style.width = '50%'
-            } else if (_status.innerText === 'Sorting' || 'Handed Over') {
+            } else if (_status.innerText === 'En Route to Landfill') {
+                percentage[i].innerText = '50%'
+                progress[i].style.width = '50%'
+            } else if (_status.innerText === 'Sorting Facility') {
                 percentage[i].innerText = '75%'
                 progress[i].style.width = '75%'
-            } else if (_status.innerText === 'Disposed') {
+            } else if (_status.innerText === 'Handed Over') {
+                percentage[i].innerText = '75%'
+                progress[i].style.width = '75%'
+            } else if (_status.innerText === 'Waste Disposed') {
                 percentage[i].innerText = '100%'
                 progress[i].style.width = '100%'
 

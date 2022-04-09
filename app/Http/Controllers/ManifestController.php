@@ -29,12 +29,7 @@ class ManifestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-//    public function create($id)
-//    {
-//        $requisition = Requisition::findOrFail($id);
-//
-//        return view('system.manifests.create', compact('requisition'));
-//    }
+
     public function create(Requisition $requisition)
     {
         $destinations = Destination::all();
@@ -57,9 +52,10 @@ class ManifestController extends Controller
             'operator_in' => $request->operator_in,
             'operator_out' => $request->operator_out,
             'destination_id' => $request->destination_id,
+            'disposal_date' => $request->disposal_date,
         ]);
 
-//        dd($request->manifestWaste);
+        dd($manifest);
 
         foreach ($request->manifestWaste as $waste) {
             $manifestItems = ManifestItem::create(
@@ -90,6 +86,7 @@ class ManifestController extends Controller
 
         $data = ['message' => 'successfully created'];
         response()->json($data);
+
         return $this->sendmail($driver_email, $client, $requisition);
     }
 
@@ -113,7 +110,7 @@ class ManifestController extends Controller
      */
     public function show(Manifest $manifest)
     {
-        return view('system.manifests.show', compact('manifest'))->with('manifest_items');
+        return view('system.manifests.show', compact('manifest'))->with(['manifest_items', 'wasteTypes']);
     }
 
     /**

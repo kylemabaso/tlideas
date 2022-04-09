@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Mail\AssignedRequisition;
 use App\Models\Client;
-use App\Models\Geolocation;
-use App\Models\Manifest;
 use App\Models\Requisition;
 use App\Models\RequisitionStatus;
 use App\Models\User;
@@ -23,7 +21,7 @@ class RequisitionController extends Controller
      */
     public function index()
     {
-        $requisitions = Requisition::with(['requisition_status', 'user', 'geolocations'])->get();
+        $requisitions = Requisition::paginate(6);
 
         return view('system.requisitions.index', compact('requisitions'));
     }
@@ -35,8 +33,9 @@ class RequisitionController extends Controller
      */
     public function create()
     {
-        return view('system.requisitions.create');
+        $clients = Client::all();
 
+        return view('system.requisitions.create', compact('clients'));
     }
 
     /**
@@ -53,13 +52,13 @@ class RequisitionController extends Controller
             'subject' => ['required', 'string', 'max:100'],
             'details' => ['max:255'],
             'pick_up_date' => ['required', 'string', 'max:20'],
-
         ]);
 
         $requisition = Requisition::create([
             'subject' => $request->subject,
             'details' => $request->details,
             'pick_up_date' => $request->pick_up_date,
+            'client_id' => $request->client_id,
             'requisition_number' => $requisitionNumber,
             'user_id' => Auth::id(),
             'requisition_status_id' => 1
@@ -117,8 +116,6 @@ class RequisitionController extends Controller
         $requisition->update($attributes);
 
         $driver = User::find($attributes['driver_id']);
-
-//        dd($driver);
 
         Mail::to($driver)->send(new AssignedRequisition($attributes));
 

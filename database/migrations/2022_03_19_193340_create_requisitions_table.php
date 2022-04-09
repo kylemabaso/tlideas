@@ -20,6 +20,7 @@ return new class extends Migration
             $table->longText('details')->nullable();
             $table->string('pick_up_date');
             $table->foreignId('requisition_status_id')->constrained();
+            $table->foreignId('client_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('driver_id')->nullable()->references('id')->on('users');
             $table->timestamps();
