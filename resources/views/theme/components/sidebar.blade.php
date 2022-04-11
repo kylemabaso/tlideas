@@ -22,7 +22,7 @@
             @hasrole('admin|owner|staff|driver|user')
             <li class="nav-item" data-item="requisitions">
                 <a class="nav-item-hold" href="#">
-                    <i class="nav-icon i-File-Clipboard-Text--Image"></i>
+                    <i class="nav-icon i-Suitcase"></i>
                     <span class="nav-text">Requisitions</span>
                 </a>
                 <div class="triangle"></div>
@@ -92,7 +92,7 @@
                 @hasrole('admin|owner|staff|driver|user')
                 <li class="nav-item">
                     <a href="{{ route('requisitions') }}">
-                        <i class="nav-icon i-Receipt-4"></i>
+                        <i class="nav-icon i-Add-File"></i>
                         <span class="item-name">View Requisitions</span>
                     </a>
                 </li>
@@ -101,7 +101,7 @@
                 @hasrole('admin|owner|staff|user')
                 <li class="nav-item">
                     <a href="{{ route('requisitions.create') }}">
-                        <i class="nav-icon i-Add-File"></i>
+                        <i class="nav-icon i-Email"></i>
                         <span class="item-name">Add Requisition</span>
                     </a>
                 </li>
@@ -114,7 +114,6 @@
                 <p>User Menu</p>
             </header>
             <ul class="childNav">
-                @hasrole('staff')
                 <li class="nav-item">
                     <a href="{{ route('users') }}">
                         <i class="nav-icon i-Find-User"></i>
@@ -133,7 +132,7 @@
                         <span class="item-name">User Roles</span>
                     </a>
                 </li>
-                @hasrole('admin|owner|staff|user')
+
             </ul>
         </div>
 

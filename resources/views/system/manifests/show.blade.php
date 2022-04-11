@@ -26,7 +26,7 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="invoice" role="tabpanel" aria-labelledby="invoice-tab">
                         <div class="d-sm-flex mb-5" data-view="print"><span class="m-auto"></span>
-                            <a href="{{ route('print') }}" class="btn btn-primary mb-sm-0 mb-3 print-invoice">Print Manifest</a>
+{{--                            <a href="{{ route('print') }}" class="btn btn-primary mb-sm-0 mb-3 print-invoice">Print Manifest</a>--}}
                         </div>
                         <!-- -===== Print Area =======-->
                         <div id="print-area">
@@ -71,7 +71,6 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {{ $manifest->manifest_items }}
 
                                         @foreach($manifest->manifest_items as $waste )
                                         <tr>

@@ -28,7 +28,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('/');
 });
 
-Route::middleware(['auth', 'role:admin|owner|staff|driver'])->group(function () {
+Route::middleware(['auth', 'role:admin|owner|staff|driver|user'])->group(function () {
     Route::get('requisitions', [RequisitionController::class, 'index'])->name('requisitions');
     Route::get('requisitions/create', [RequisitionController::class, 'create'])->name('requisitions.create');
     Route::get('requisitions/{requisition}', [RequisitionController::class, 'show']);
@@ -52,8 +52,6 @@ Route::middleware(['auth', 'role:admin|owner'])->group(function () {
     Route::get('clients/create', [ClientController::class, 'create'])->name('clients.create');
     Route::post('clients/store', [ClientController::class, 'store'])->name('clients.store');
 
-    Route::get('requisitions/{requisition}/manifests/create', [ManifestController::class, 'create'])->name('manifest.create');
-    Route::post('requisitions/{requisition}/manifests', [ManifestController::class, 'store'])->name('manifest.store');
     Route::post('requisitions/assign', [ManifestController::class, 'assign'])->name('manifest.assign');
 
     Route::get('roles', [RolesController::class, 'index'])->name('roles');
