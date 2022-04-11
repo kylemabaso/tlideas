@@ -21,7 +21,7 @@ class RequisitionController extends Controller
      */
     public function index()
     {
-        $requisitions = Requisition::paginate(6);
+        $requisitions = Requisition::orderBy('created_at', 'desc')->paginate(6);
 
         return view('system.requisitions.index', compact('requisitions'));
     }
