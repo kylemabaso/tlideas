@@ -13,6 +13,7 @@
     <div class="separator-breadcrumb border-top"></div>
 
     <div class="row mb-4">
+        @hasrole('admin|owner|staff')
         <div class="col-md-12 col-lg-8 mt-4">
             <div class="card o-hidden h-100">
                 <div class="card-header bg-transparent">
@@ -30,7 +31,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <h3 class="text-muted text-14 font-weight-500">April 2022</h3><span class="text-muted text-18 font-weight-600">{{ $totalTonnage }}</span>
+                            <h3 class="text-muted text-14 font-weight-500">April 2022</h3><span class="text-muted text-18 font-weight-600">{{ $totalTonnage }} Tons Disposed this Month</span>
                         </div>
 {{--                        <div class="col-md-6">--}}
 {{--                            <h3 class="text-muted text-14 font-weight-500">April</h3><span class="text-muted text-18 font-weight-600">2000 Tons</span>--}}
@@ -52,7 +53,6 @@
             </div>
         </div>
 
-        @hasrole('admin|owner|staff')
         <div class="col-lg-8 col-xl-8 mt-4">
             <div class="card">
                 <div class="card-body">

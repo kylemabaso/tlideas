@@ -18,15 +18,17 @@
                 <div class="triangle"></div>
             </li>
             @endhasrole
-            @hasrole('admin|owner|staff|driver')
+
+            @hasrole('admin|owner|staff|driver|user')
             <li class="nav-item" data-item="requisitions">
                 <a class="nav-item-hold" href="#">
-                    <i class="nav-icon i-Suitcase"></i>
+                    <i class="nav-icon i-File-Clipboard-Text--Image"></i>
                     <span class="nav-text">Requisitions</span>
                 </a>
                 <div class="triangle"></div>
             </li>
             @endhasrole
+
             @hasrole('admin|owner|staff')
             <li class="nav-item" data-item="users">
                 <a class="nav-item-hold" href="#">
@@ -36,8 +38,6 @@
                 <div class="triangle"></div>
             </li>
             @endhasrole
-
-
         </ul>
     </div>
         <div class="sidebar-left-secondary rtl-ps-none" data-perfect-scrollbar data-suppress-scroll-x="true">
@@ -89,18 +89,19 @@
                 <p>Requisition Menu</p>
             </header>
             <ul class="childNav">
-                @hasrole('admin|owner|staff|driver')
+                @hasrole('admin|owner|staff|driver|user')
                 <li class="nav-item">
                     <a href="{{ route('requisitions') }}">
-                        <i class="nav-icon i-Add-File"></i>
+                        <i class="nav-icon i-Receipt-4"></i>
                         <span class="item-name">View Requisitions</span>
                     </a>
                 </li>
                 @endhasrole
-                @hasrole('admin|owner|staff')
+
+                @hasrole('admin|owner|staff|user')
                 <li class="nav-item">
                     <a href="{{ route('requisitions.create') }}">
-                        <i class="nav-icon i-Email"></i>
+                        <i class="nav-icon i-Add-File"></i>
                         <span class="item-name">Add Requisition</span>
                     </a>
                 </li>
@@ -126,7 +127,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="ladda.button.html">
+                    <a href="{{ route('roles') }}">
                         <i class="nav-icon i-Checked-User"></i>
                         <span class="item-name">User Roles</span>
                     </a>
