@@ -31,7 +31,7 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="card mb-4 o-hidden"><img class="card-img-top" src="../../dist-assets/images/photo-wide-3.jpg" alt="">
+                            <div class="card mb-4 o-hidden">
                                 <div class="card-body">
                                     <h5 class="card-title">TL - {{ $requisition->requisition_number }}</h5>
                                     <p class="card-text">{{ $requisition->subject }}</p>

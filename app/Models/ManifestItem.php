@@ -19,7 +19,7 @@ class ManifestItem extends Model
         'mass_kg'
     ];
 
-    public function wasteType()
+    public function waste_types()
     {
         return $this->belongsTo(WasteType::class);
     }

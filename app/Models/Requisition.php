@@ -21,7 +21,7 @@ class Requisition extends Model
         'manifest_id'
     ];
 
-    protected $dates = ['created_at'];
+    protected $dates = ['created_at', 'pick_up_date'];
 
 
     public function requisition_status()

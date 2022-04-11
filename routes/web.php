@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GeolocationController;
 use App\Http\Controllers\ManifestController;
 use App\Http\Controllers\RequisitionController;
@@ -24,9 +25,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', function () {
-        return view('system.dashboard');
-    })->name('/');
+    Route::get('/', [DashboardController::class, 'index'])->name('/');
 });
 
 Route::middleware(['auth', 'role:admin|owner|staff|driver'])->group(function () {
@@ -57,8 +56,10 @@ Route::middleware(['auth', 'role:admin|owner'])->group(function () {
     Route::post('requisitions/{requisition}/manifests', [ManifestController::class, 'store'])->name('manifest.store');
     Route::post('requisitions/assign', [ManifestController::class, 'assign'])->name('manifest.assign');
 
+    Route::get('roles', [RolesController::class, 'index'])->name('roles');
     Route::get('roles/create', [RolesController::class, 'create'])->name('roles.create');
-    Route::get('roles/store', [RolesController::class, 'store'])->name('roles.store');
+    Route::post('roles/store', [RolesController::class, 'store'])->name('roles.store');
+    Route::get('roles/delete', [RolesController::class, 'destroy'])->name('roles.delete');
 
     Route::get('user/{user}', function (User $user) {
         return view('system.users.index', [
@@ -80,9 +81,5 @@ Route::middleware(['auth', 'role:admin|owner'])->group(function () {
         $dompdf->stream('Manifest.pdf');
     })->name('print');
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

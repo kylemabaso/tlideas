@@ -8,6 +8,18 @@ use Spatie\Permission\Models\Role;
 class RolesController extends Controller
 {
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $roles = Role::all();
+
+        return view('system.roles.index', compact('roles'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

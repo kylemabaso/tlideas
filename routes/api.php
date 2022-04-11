@@ -31,14 +31,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('requisitions', function (Request $request) {
-    $id = Auth::id();
+    $id = Auth::user()->id;
+
+    dd($id);
 
     $requisitions = Requisition::with('requisition_status')
         ->where('driver_id','=', $id)
         ->get();
 
     return $requisitions;
-});
+})->middleware('auth');
+
 
 Route::get('requisition/{requisition}', function (Requisition $requisition) {
     $requisition = Requisition::first()->with('requisition_status')->get();
@@ -47,8 +50,8 @@ Route::get('requisition/{requisition}', function (Requisition $requisition) {
 });
 
 
-Route::get('statuses/', function (Request $request) {
-    $status = RequisitionStatus::where('id', '>=', 4)->get();
+Route::get('statuses', function (Request $request) {
+    $status = RequisitionStatus::where('id', '>=', 3)->get();
 
     return $status;
 });

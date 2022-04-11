@@ -25,46 +25,13 @@
                         </span>
                     </div>
 
-                    <form action="{{url('requisitions/store')}}" method="post">
+                    <form action="{{ route('roles.store') }}" method="post">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6 form-group mb-3">
-                                    <label for="subject">Subject</label>
-                                    <input class="form-control form-control-rounded" name="subject" id="subject" type="text" placeholder="Enter subject" />
-                                    @error('subject')
-                                    <p class="danger">{{ $message }}</p>
-                                    @enderror
-                                </div>
-
-                                <div class="col-md-6 form-group mb-3">
-                                    <label for="subject">When</label>
-                                    <input class="form-control form-control-rounded" name="pick_up_date" type="datetime-local" id="pickUpDate">
-                                    @error('pick_up_date')
-                                    <p class="danger">{{ $message }}</p>
-                                    @enderror
-                                </div>
-
-                                <div class="col-md-6 form-group mb-3">
-                                    <label for="subject">Client</label>
-                                    <select name="client_id" class="form-control form-control-rounded">
-                                        <option value="">None</option>
-                                        @foreach($clients as $client)
-                                            <option value="{{ $client->id }}">{{ $client->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('firstname')
-                                    <p>{{ $message }}</p>
-                                    @enderror
-                                </div>
-
-                                <div class="col-md-6 form-group mb-3">
-                                    <label for="details">Details</label>
-                                    <textarea class="form-control form-control-rounded"
-                                              name="details"
-                                              id="details"
-                                    ></textarea>
-
-                                    @error('details')
+                                    <label for="subject">Name</label>
+                                    <input class="form-control form-control-rounded" name="name" id="name" type="text" placeholder="Name" />
+                                    @error('name')
                                     <p class="danger">{{ $message }}</p>
                                     @enderror
                                 </div>

@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="col-md-6 text-sm-right">
                                     <h5 class="font-weight-bold">Disposal</h5>
-                                    <p>Landfill: {{ $manifest->destination->name ?? "N/A" }}</p>
+                                    <p>Landfill: {{ $manifest->destination_id ?? "N/A"}}</p>
                                     <h4>Notes: </h4>
                                     <p>{{ $manifest->notes }}</p>
                                 </div>
@@ -71,6 +71,8 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        {{ $manifest->manifest_items }}
+
                                         @foreach($manifest->manifest_items as $waste )
                                         <tr>
                                             <th scope="row">{{ $waste->waste_type_id }}</th>

@@ -55,8 +55,6 @@ class ManifestController extends Controller
             'disposal_date' => $request->disposal_date,
         ]);
 
-        dd($manifest);
-
         foreach ($request->manifestWaste as $waste) {
             $manifestItems = ManifestItem::create(
                 [
@@ -110,7 +108,7 @@ class ManifestController extends Controller
      */
     public function show(Manifest $manifest)
     {
-        return view('system.manifests.show', compact('manifest'))->with(['manifest_items', 'wasteTypes']);
+        return view('system.manifests.show', compact('manifest'));
     }
 
     /**

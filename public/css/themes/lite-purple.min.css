@@ -24659,6 +24659,7 @@ button.ul-accordion__link {
   margin: 0;
   font-size: 1.2rem;
   font-weight: 500;
+    padding: 10px 0;
   color: #52495a; }
 
 .ul-widget-nav-tabs-line .nav-item .nav-link.active {

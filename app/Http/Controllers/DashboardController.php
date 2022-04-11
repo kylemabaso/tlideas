@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dashboard;
+use App\Models\Manifest;
+use App\Models\ManifestItem;
 use App\Models\Requisition;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -16,11 +20,26 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $totalTonnage = DB::table('manifest_waste')
-            ->where('id', Auth::id())
-            ->avg('price');    }
+        $requisitions = Requisition::orderBy('pick_up_date', 'desc')->take(5)->get();
+        $manifests = Manifest::orderBy('created_at', 'desc')->take(5)->get();
+        $client = Auth::user()->client_id;
 
+        $client_req = Requisition::where('client_id', '=', $client)
+            ->with('manifest')
+            ->orderBy('pick_up_date', 'desc')
+            ->take(5)
+            ->get();
 
+        $month = date('m');
+
+        $totalTonnage = ManifestItem::latest()
+        ->whereMonth('created_at', $month)
+        ->sum('mass_kg');
+
+        return view('system.dashboard', compact(
+            'requisitions', 'manifests', 'totalTonnage',  'client_req'
+        ));
+    }
 
     /**
      * Show the form for creating a new resource.
