@@ -114,6 +114,7 @@
                 <p>User Menu</p>
             </header>
             <ul class="childNav">
+                @hasrole('staff')
                 <li class="nav-item">
                     <a href="{{ route('users') }}">
                         <i class="nav-icon i-Find-User"></i>
@@ -132,7 +133,7 @@
                         <span class="item-name">User Roles</span>
                     </a>
                 </li>
-
+                @hasrole('admin|owner|staff|user')
             </ul>
         </div>
 
